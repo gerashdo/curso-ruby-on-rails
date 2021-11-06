@@ -38,6 +38,7 @@ class PhotosController < ApplicationController
 
         session[:intentos] = session[:intentos] ? session[:intentos] + 1 : 1
         @photo = Photo.new
+        @tags = Tag.all
     end
 
     def create

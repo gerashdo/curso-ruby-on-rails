@@ -1,0 +1,68 @@
+<!--
+<% if local_assigns[:nombre] %>
+    <h3><%= "Hola #{:nombre}" %></h3>
+<% end %>
+-->
+
+<%= form_with model: @photo do |form| %>
+    <!--
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    -->
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+        <!--
+        <%# <label for="title"> Titulo </label>
+        <input type="text" name="photo[title]" id="title"> %>
+        -->
+    </div>
+
+    <div>
+    <!--
+        <%= select_tag :todo_id, raw("<option value='1'>Primer todo</option>")%>
+    -->
+    <!--
+        <%= select_tag :todo_id, options_for_select([ ["Primer todo", 1], ["Segundo todo", 2] ]) %>
+    -->
+    <!--
+        <%= select_tag :todo_id, options_from_collection_for_select(Todo.all, :id, :title) %>
+    -->
+    <!--
+        <%= select_tag "photo[todo_id]", options_from_collection_for_select(Todo.all, :id, :title) %>
+    -->
+        <%= form.label :todo_id %>
+        <%= form.collection_select(:todo_id, Todo.all, :id, :title, {include_blank: true}, {class:"custom"}) %>
+
+    </div>
+
+    <div>
+        <p>
+            Tags de la foto
+        </p>
+        <%# hidden_field_tag "photo[tag_ids][]", nil %>
+        <%= form.collection_check_boxes(:tag_ids, @tags, :id, :title) %>
+        <%# @tags.each do |tag| %>
+            <%# form.check_box "tag_ids[]", name:"photo[tag_ids][]", include_hidden: :false %>
+            <%# check_box_tag "photo[tag_ids][]", tag.id, false, id: "tag_#{tag.id}" %>
+            <%# label_tag "tag_#{tag.id}", tag.title %>
+        <%#end%>
+    </div>
+
+    <div>
+        <%= form.check_box :is_public %>
+    </div>
+
+    <div>
+        <%= form.label :image_url %>
+        <%= form.url_field :image_url %>
+        <!--
+        <label for="image_url"> URL de la foto </label>
+        <input type="url" name="photo[image_url]" id="image_url">
+        -->
+    </div>
+
+    <%= form.submit "Enviar" %>
+    <!--
+    <input type="submit" name="submit" value="Enviar">
+    -->
+<%end%>
