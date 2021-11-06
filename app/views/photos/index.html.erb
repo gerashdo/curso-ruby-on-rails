@@ -5,10 +5,11 @@
 <%end%>
 
 <%= link_to "Nuevo", new_photo_path %>
-<% @photos.each do |photo| %>
-    <div>
-        <h2><%= photo.title %></h2>
-        <%= image_tag photo.image_url %>
-        <%= link_to "Ver más", photo %>
-    </div>
-<% end %>
+
+<%# render @photos %>
+
+<%= render partial: "photos/foto", collection: @photos, as: :photo %>
+
+<%# @photos.each do |photo| %>
+    <%# render photo %>
+<%# end %>
