@@ -1,0 +1,42 @@
+<!--
+<%# <form action="<%= photo_path(@id) %>" method="post""> %>
+-->
+<%= form_with model: @photo do |form| %>
+    <!--
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    -->
+    
+
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+        <!--
+        <label for="title"> Titulo </label>
+        <input type="text" name="photo[title]" id="title">
+        -->
+    </div>
+
+    <div>
+        <%= form.label :image_url %>
+        <%= form.url_field :image_url %>
+        <!--
+        <label for="image_url"> URL de la foto </label>
+        <input type="url" name="photo[image_url]" id="image_url">
+        -->
+    </div>
+
+    <div>
+        <%# hidden_field_tag "photo[tag_ids][]", nil %>
+        <%= form.collection_check_boxes(:tag_ids, @tags, :id, :title) %>
+        <%# @tags.each do |tag| %>
+            <%# form.check_box "tag_ids[]", name:"photo[tag_ids][]", include_hidden: :false %>
+            <%# check_box_tag "photo[tag_ids][]", tag.id, false, id: "tag_#{tag.id}" %>
+            <%# label_tag "tag_#{tag.id}", tag.title %>
+        <%#end%>
+    </div>
+
+    <%= form.submit "Enviar" %>
+    <!--
+    <input type="submit" name="submit" value="Enviar">
+    -->
+<%end%>

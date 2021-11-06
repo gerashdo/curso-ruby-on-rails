@@ -1,0 +1,8 @@
+<div>
+    <h2> <%= @photo.title %> </h2>
+    <%= image_tag @photo.image_url %>
+    <div>
+    <%= link_to "Editar", edit_photo_path(@photo.id) %>
+    <%= link_to "Eliminar", photo_path(@photo.id), method: :delete %>
+    </div>
+</div>
