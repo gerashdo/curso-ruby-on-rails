@@ -35,6 +35,15 @@
         <%#end%>
     </div>
 
+    <div style="padding:1em 0 1em 0;border: solid 1px">
+        <%# form.collection_select(:todo_id, Todo.all, :id, :title, {include_blank: true}, {class:"custom"}) %>
+        <%# Todo.all.each do |todo| %>
+            <%# form.label :todo_id, todo.title %>
+            <%# form.radio_button :todo_id, todo.id %>
+        <%# end %>
+        <%= form.collection_radio_buttons :todo_id, Todo.all, :id, :title %>
+    </div>
+
     <%= form.submit "Enviar" %>
     <!--
     <input type="submit" name="submit" value="Enviar">
