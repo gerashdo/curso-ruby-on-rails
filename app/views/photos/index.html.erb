@@ -6,9 +6,11 @@
 
 <%= link_to "Nuevo", new_photo_path %>
 
-<%# render @photos %>
+<%= render partial: "header", layout: "main/hero"%>
 
-<%= render partial: "photos/foto", collection: @photos, as: :photo %>
+<%= render @photos %>
+
+<%# render partial: "photos/foto", collection: @photos, as: :photo %>
 
 <%# @photos.each do |photo| %>
     <%# render photo %>

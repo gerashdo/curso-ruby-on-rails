@@ -1,7 +1,12 @@
 <p> Intentos: <%= session[:intentos] %> </p>
 <%# render "form", photo: @photo, nombre: "Gerardo" %>
 <%# render partial: "form", locals: {nombre: "Gerardo", photo: @photo}%>
-<%= render "form"%>
+
+
+
+<%= render "form" do %>
+    <h1>Crear foto</h1>
+<%end%>
 <!--
 <form action="<%= photos_path %>" method="post">
 -->
