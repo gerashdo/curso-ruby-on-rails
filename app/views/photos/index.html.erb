@@ -6,7 +6,11 @@
 
 <%= link_to "Nuevo", new_photo_path %>
 
-<%= render partial: "header", layout: "main/hero"%>
+<%= hero_banner do %>
+    <h1>Hola Mundo</h1>
+<%end%>
+
+<%# render partial: "header", layout: "main/hero"%>
 
 <%= render @photos %>
 
